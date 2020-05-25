@@ -1,5 +1,5 @@
 import numpy
 
-game = numpy.zeros((20, 20), dtype=bool)
-
-print(game.shape)
+class Grid:
+    def __init__(self, x_dim, y_dim):
+        self.grid = numpy.zeros((x_dim, y_dim), dtype=bool)
