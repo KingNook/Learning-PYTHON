@@ -1,4 +1,8 @@
 
+===
+# TO DO
+[] - Clean up surrounding cells code in sim.py
+
 
 ===
 ## Ideas
