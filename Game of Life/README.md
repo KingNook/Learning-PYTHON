@@ -1,8 +1,8 @@
 
 ===
 # TO DO
-- [] Clean up surrounding cells code in sim.py
-- [] Deal with update() method
+- [ ] Clean up surrounding cells code in sim.py
+- [ ] Deal with update() method
 
 ## Urgent
 - [x] Change get_cell method to unpack tuples
