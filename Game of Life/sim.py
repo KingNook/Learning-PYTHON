@@ -7,7 +7,7 @@ class Grid:
         self.grid = grid if grid else numpy.zeros((x_dim, y_dim), dtype=bool)
 
     def get_cell(self, *cell_coords):
-        return self.grid[cellcoords[1], cell_coords[0]] if cell_x else None
+        return self.grid[cell_coords[1], cell_coords[0]] if cell_coords else None
 
     def set_grid(self, grid):
         '''
