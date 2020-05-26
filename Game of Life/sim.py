@@ -65,6 +65,8 @@ class Grid:
         else:
             cells.append(None)
 
+        return [self.get_cell(i) for i in cells]
+
     def update(self):
         '''
         One in-game tick (update board)
@@ -74,6 +76,6 @@ class Grid:
         # For all cells, check all surrounding cells
         for i in range(self.x):
             for j in range(self.y):
-                pass
+                self.surrounding_cells(i, j)
 
         return new
