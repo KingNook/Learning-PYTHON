@@ -3,6 +3,9 @@
 # TO DO
 [] - Clean up surrounding cells code in sim.py
 
+## Urgent
+[] - Change get_cell method to unpack tuples
+[] - Deal with return list for surrounding cells method
 
 ===
 ## Ideas
