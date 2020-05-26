@@ -6,6 +6,9 @@ class Grid:
         self.y = y_dim
         self.grid = grid if grid else numpy.zeros((x_dim, y_dim), dtype=bool)
 
+    def get_cell(self, cell_x, *cell_y):
+        return self.grid[cell_y, cell_x] if cell_x else None
+
     def set_grid(self, grid):
         '''
         leave <grid> argument empty to reset grid
@@ -24,11 +27,31 @@ class Grid:
         # Clean up this code
         if sides[0]:
             cells.append((self.x-1, self.y))
+
+            if sides[2]:
+                cells.append((self.x-1, self.y-1))
+            else:
+                cells.append(None)
+            
+            if sides[3]:
+                cells.append((self.x-1, self.y+1))
+            else:
+                cells.append(None)
         else:
             cells.append(None)
         
         if sides[1]:
             cells.append((self.x+1, self.y))
+
+            if sides[2]:
+                cells.append((self.x+1, self.y-1))
+            else:
+                cells.append(None)
+            
+            if sides[3]:
+                cells.append((self.x+1, self.y+1))
+            else:
+                cells.append(None)
         else:
             cells.append(None)
         
@@ -46,7 +69,11 @@ class Grid:
         '''
         One in-game tick (update board)
         '''
-        prev = self.grid.copy()
+        new = self.grid.copy()
+
+        # For all cells, check all surrounding cells
         for i in range(self.x):
             for j in range(self.y):
                 pass
+
+        return new
