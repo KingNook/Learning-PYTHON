@@ -2,7 +2,8 @@
 ===
 # TO DO
 - [ ] Clean up surrounding cells code in sim.py
-- [ ] Deal with update() method
+- [x] Deal with update() method
+- [ ] Clean up \__str__() (and \__repr__())
 
 ## Urgent
 - [x] Change get_cell method to unpack tuples
