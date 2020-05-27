@@ -76,6 +76,10 @@ class Grid:
         # For all cells, check all surrounding cells
         for i in range(self.x):
             for j in range(self.y):
-                self.surrounding_cells(i, j)
+                if sum(self.surrounding_cells(i, j)) >= 3:
+                    new[j, i] = True
+                else:
+                    new[j, i] = False
 
-        return new
+        self.grid = new
+        return True
