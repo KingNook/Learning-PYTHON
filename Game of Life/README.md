@@ -1,7 +1,7 @@
 ===
 # Dependencies
 - [x] NumPy
-- [ ] Pygame
+- [x] Pygame
 
 ===
 # TO DO
