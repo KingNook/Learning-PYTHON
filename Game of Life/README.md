@@ -6,6 +6,7 @@
 - [x] Clean up surrounding cells code in sim.py (Thank you @anominos)
 - [x] Deal with update() method
 - [ ] Clean up \__str__() (and \__repr__())
+- [ ] File import (pattern) for sim.py
 
 # AFTER FINISHED
 - [ ] Remove default values in Grid constructor (for debugging purposes)
