@@ -1,9 +1,17 @@
 
 ===
+# Dependencies
+- [x] NumPy
+- [ ] Pygame
+
+===
 # TO DO
 - [ ] Clean up surrounding cells code in sim.py
 - [x] Deal with update() method
 - [ ] Clean up \__str__() (and \__repr__())
+
+# AFTER FINISHED
+- [ ] Remove default values in Grid constructor (for debugging purposes)
 
 ## Urgent
 - [x] Change get_cell method to unpack tuples
