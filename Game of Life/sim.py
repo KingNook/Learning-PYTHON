@@ -1,10 +1,28 @@
 import numpy
 
+def gg(grid):
+    grid[1, 2] = True
+    grid[2, 0] = True
+    grid[2, 2] = True
+    grid[3, 1] = True
+    grid[3, 2] = True
+
 class Grid:
-    def __init__(self, x_dim, y_dim, grid = None):
+    # REMOVE DEFAULT VALUES
+    def __init__(self, x_dim = 10, y_dim = None, grid = None):
         self.x = x_dim
-        self.y = y_dim
-        self.grid = grid if grid else numpy.zeros((x_dim, y_dim), dtype=bool)
+        self.y = y_dim if y_dim else x_dim
+        self.grid = grid if grid else numpy.zeros((x_dim, y_dim if y_dim else x_dim), dtype=bool)
+
+    def __str__(self):
+        return self.grid.__str__()
+
+    def __getitem__(self, key):
+        return self.grid[key]
+
+    def __setitem__(self, key, value):
+        self.grid[key] = value
+        return True
 
     def get_cell(self, *cell_coords):
         return self.grid[cell_coords[1], cell_coords[0]] if cell_coords else None
