@@ -39,9 +39,18 @@ class Grid:
             return None
 
     def surrounding_cells(self, cell_x, cell_y):
+        ret = []
+        adj = [(i,j)for i in range(-1,2)for j in range(-1,2)if not(i==j==0)]
+        for dx, dy in adj:
+            newx, newy = cell_x + dx, cell_y + dy
+            if 0 <= newx < self.x and 0 <= newy < self.y:
+                ret.append(self.get_cell(newx, newy))
+        return ret
+
+        '''
         cells = []
         # Left, Right, Top, Bottom
-        sides = [cell_x != 0, cell_x != self.x, cell_y != 0, cell_y != self.y]
+        sides = [cell_x != 0, cell_x != self.x-1, cell_y != 0, cell_y != self.y-1]
         # Clean up this code
         if sides[0]:
             cells.append((self.x-1, self.y))
@@ -84,20 +93,26 @@ class Grid:
             cells.append(None)
 
         return [self.get_cell(i) for i in cells]
+    '''
 
     def update(self):
         '''
         One in-game tick (update board)
         '''
-        new = self.grid.copy()
+        new = numpy.zeros((self.x, self.y), bool)
 
         # For all cells, check all surrounding cells
         for i in range(self.x):
             for j in range(self.y):
-                if sum(self.surrounding_cells(i, j)) >= 3:
-                    new[j, i] = True
+                s = sum(self.surrounding_cells(i, j))
+                c = self.get_cell(i, j)
+                if c:
+                    if s == 2 or s == 3:
+                        new[j, i] = True
                 else:
-                    new[j, i] = False
+                    if s == 3:
+                        new[j, i] = True
+
 
         self.grid = new
         return True
