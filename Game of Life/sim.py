@@ -20,6 +20,9 @@ class Grid:
     def __str__(self):
         return self.grid.__str__()
 
+    def __repr__(self):
+        return f'Grid({self.x}, {self.y}, {self.grid})'
+
     def __getitem__(self, key):
         return self.grid[key]
 
