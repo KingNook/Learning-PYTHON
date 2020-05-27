@@ -3,7 +3,7 @@
 - [x] Pygame
 
 # TO DO
-- [ ] Clean up surrounding cells code in sim.py
+- [x] Clean up surrounding cells code in sim.py (Thank you @anominos)
 - [x] Deal with update() method
 - [ ] Clean up \__str__() (and \__repr__())
 
