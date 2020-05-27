@@ -1,6 +1,9 @@
 import numpy
 
 def gg(grid):
+    ''' 
+    Create glider
+    '''
     grid[1, 2] = True
     grid[2, 0] = True
     grid[2, 2] = True
