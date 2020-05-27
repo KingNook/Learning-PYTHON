@@ -39,61 +39,15 @@ class Grid:
             return None
 
     def surrounding_cells(self, cell_x, cell_y):
+        # Thank you @anominos
+
         ret = []
-        adj = [(i,j)for i in range(-1,2)for j in range(-1,2)if not(i==j==0)]
+        adj = [(i, j)for i in range(-1, 2)for j in range(-1, 2)if not(i == j == 0)]
         for dx, dy in adj:
             newx, newy = cell_x + dx, cell_y + dy
             if 0 <= newx < self.x and 0 <= newy < self.y:
                 ret.append(self.get_cell(newx, newy))
         return ret
-
-        '''
-        cells = []
-        # Left, Right, Top, Bottom
-        sides = [cell_x != 0, cell_x != self.x-1, cell_y != 0, cell_y != self.y-1]
-        # Clean up this code
-        if sides[0]:
-            cells.append((self.x-1, self.y))
-
-            if sides[2]:
-                cells.append((self.x-1, self.y-1))
-            else:
-                cells.append(None)
-            
-            if sides[3]:
-                cells.append((self.x-1, self.y+1))
-            else:
-                cells.append(None)
-        else:
-            cells.append(None)
-        
-        if sides[1]:
-            cells.append((self.x+1, self.y))
-
-            if sides[2]:
-                cells.append((self.x+1, self.y-1))
-            else:
-                cells.append(None)
-            
-            if sides[3]:
-                cells.append((self.x+1, self.y+1))
-            else:
-                cells.append(None)
-        else:
-            cells.append(None)
-        
-        if sides[2]:
-            cells.append((self.x, self.y-1))
-        else:
-            cells.append(None)
-        
-        if sides[3]:
-            cells.append((self.x, self.y+1))
-        else:
-            cells.append(None)
-
-        return [self.get_cell(i) for i in cells]
-    '''
 
     def update(self):
         '''
