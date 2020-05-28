@@ -10,6 +10,7 @@
 
 # AFTER FINISHED
 - [ ] Remove default values in Grid constructor (for debugging purposes)
+- [ ] Remove gg() function (creates glider in top-left corner)
 
 ## Urgent
 - [x] Change get_cell method to unpack tuples
