@@ -7,8 +7,6 @@ DIMENSIONS = (600, 600)
 
 M_Graph = Mandelbrot(600, R_S = -2, R_E = 1, I_S = -2, I_E = 1)
 
-palette = []
-
 image = Image.new('RGB', DIMENSIONS, BLACK)
 draw = ImageDraw.Draw(image)
 
