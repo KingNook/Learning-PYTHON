@@ -13,33 +13,34 @@ class Mandelbrot:
         self.graph = numpy.zeros((self.x, self.y), int)
         self.cache = {}
 
-        if os.path.isfile('./cache.txt'):
-            with open('./cache.txt' , 'r+') as f:
+        if os.path.isfile('./Graphing/cache.txt'):
+            with open('./Graphing/cache.txt' , 'r+') as f:
                 c = f.read().replace("'", "\"")
                 self.cache = json.loads(c)
 
         self.update()
 
-        with open('./cache.txt' , 'w') as f:
+        with open('./Graphing/cache.txt' , 'w') as f:
             f.write(repr(self.cache))
 
     def __str__(self):
         return self.graph.__str__()
 
     def check_pix(self, x, y):
-        if (x, y) in self.cache.keys():
-            return self.cache[(x, y)]
-
         # Plot values from real start(R_S) to real end (R_E) and same for imaginaries (I_S tp I_E)
         c = complex(self.real[0] + (x / self.x) * self.real[1],
                     self.imaginary[0] + (y / self.y) * self.imaginary[1])
+
+        if repr(c) in self.cache.keys():
+            return self.cache[repr(c)]
+        
         n = 1
         z = c
         while n < self.MAX_ITER and abs(z) <= 2:
             z = z * z + c
             n += 1
         
-        self.cache[(x, y)] = n
+        self.cache[repr(c)] = n
         return n
 
     def update(self):

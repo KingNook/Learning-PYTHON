@@ -1,11 +1,15 @@
 from mandelbrot import Mandelbrot
 from PIL import Image, ImageDraw
+import os
+
+if os.path.isfile('./Graphing/Output/Mandelbrot.png'):
+    os.remove('./Graphing/Output/Mandelbrot.png')
 
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
-DIMENSIONS = (600, 600)
+DIMENSIONS = (1000, 1000)
 
-M_Graph = Mandelbrot(600, R_S = -2, R_E = 1, I_S = -2, I_E = 1)
+M_Graph = Mandelbrot(1000, R_S = -2, R_E = 1, I_S = -2, I_E = 1)
 
 image = Image.new('RGB', DIMENSIONS, BLACK)
 draw = ImageDraw.Draw(image)
