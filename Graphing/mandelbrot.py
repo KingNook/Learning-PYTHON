@@ -10,7 +10,7 @@ class Mandelbrot:
         self.real = (R_S, R_E - R_S)
         self.imaginary = (I_S, I_E - I_S)
 
-        self.graph = numpy.zeros((self.x, self.y), bool)
+        self.graph = numpy.zeros((self.x, self.y), int)
 
         self.update()
 
