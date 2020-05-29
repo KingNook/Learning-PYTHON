@@ -14,6 +14,9 @@ class Mandelbrot:
 
         self.update()
 
+    def __str__(self):
+        return self.graph.__str__()
+
     def check_pix(self, x, y):
         # Plot values from real start(R_S) to real end (R_E) and same for imaginaries (I_S tp I_E)
         c = complex(self.real[0] + (x / self.x) * self.real[1],
