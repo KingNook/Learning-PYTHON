@@ -6,3 +6,13 @@ screen = pygame.display.set_mode(const.DIM)
 
 board = Board(screen)
 board.draw_board()
+
+# GAME LOOP
+running = True
+while running:
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+    pygame.display.flip()
