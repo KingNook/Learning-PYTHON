@@ -1,13 +1,14 @@
 import pygame
 
 class Board:
-    def __init__(self):
+    def __init__(self, position = None):
         self.white = {}
         self.black = {}
 
         self.get_pieces()
 
-        self.FEN = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1'
+        # Starting position
+        self.fen = position if position else 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1'
 
     def get_pieces(self):
         # White pieces
@@ -27,3 +28,6 @@ class Board:
         self.black['P'] = pygame.image.load('/pieces/Chess_pdt60.png')
 
         return True
+
+    def parse(self):
+        return NotImplemented
