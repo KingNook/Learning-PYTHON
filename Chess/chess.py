@@ -4,7 +4,7 @@ pygame.init()
 path = os.getcwd().replace('\\', '/').replace('\\', '/')
 
 def get_coords(a, b):
-    return (a * const.PIX[0], (7 - b) * const.PIX[1])
+    return (a * const.PIX[0], b * const.PIX[1])
 
 def square(a, b):
     return pygame.Rect(const.PIX[0] * a, const.PIX[1] * b, const.PIX[0], const.PIX[1])
@@ -20,12 +20,16 @@ class Board:
         self.pieces = {}
         self.board = numpy.zeros((8, 8), str)
         self.display = display
+        self.selection = None
 
         self.get_pieces()
 
         # Starting position
         self.fen = position if position else 'rnbqkbnr/pppppppp/00000000/00000000/00000000/00000000/PPPPPPPP/RNBQKBNR w KQkq - 0 1' # Proper FEN --> 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1'
         self.parse()
+
+    def mouse_handler(self, pos):
+        pass
 
     def draw_board(self):
 
@@ -35,7 +39,7 @@ class Board:
                 pygame.draw.rect(self.display, is_white(x, y), square(x, y))
                 piece = self.board[y, x]
                 if piece != '0':
-                    print(self.pieces[piece])
+                    print(piece, self.pieces[piece], get_coords(x, y), x, y)
                     self.display.blit(self.pieces[piece], get_coords(x, y))
 
         return True
@@ -69,7 +73,7 @@ class Board:
         fen = fen if fen else self.fen
 
         pos, move, castle, en_passant, halfmove, fullmove = fen.split(' ')
-        board = [list(i) for i in pos.split('/')]
+        board = [list(i) for i in pos[::-1].split('/')]
         for y in range(8):
             for x in range(8):
                 self.board[y, x] = board[y][x]
