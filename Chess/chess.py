@@ -80,7 +80,7 @@ class Board:
         fen = fen if fen else self.fen
 
         pos, move, castle, en_passant, halfmove, fullmove = fen.split(' ')
-        board = [list(i) for i in pos[::-1].split('/')]
+        board = [list(i) for i in pos.split('/')[::-1]]
         for y in range(8):
             for x in range(8):
                 self.board[y, x] = board[y][x]
