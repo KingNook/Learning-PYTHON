@@ -28,6 +28,11 @@ class Board:
         self.fen = position if position else 'rnbqkbnr/pppppppp/00000000/00000000/00000000/00000000/PPPPPPPP/RNBQKBNR w KQkq - 0 1' # Proper FEN --> 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1'
         self.parse()
 
+    # Circle from top left corner
+    # Unpack to the pygame.draw.circle function
+    def circle(self, a, b):
+        return (self.display, const.SELECTION, ((a + 0.5) * const.PIX[0], (b + 0.5) * const.PIX[1]))
+
     def mouse_handler(self, pos):
         square = (pos[0] // const.PIX[0], pos[1] // const.PIX[1])
         if self.board[square[1], square[0]] != '0':
