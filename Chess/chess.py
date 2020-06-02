@@ -36,10 +36,15 @@ class Board:
     def mouse_handler(self, pos):
         square = (pos[0] // const.PIX[0], pos[1] // const.PIX[1])
         if self.board[square[1], square[0]] != '0':
+            
+            if self.selection == square:
+                print(f'Already selected: {self.selection}')
+                return True
+            
             self.selection = square
             print(f'Selection: {self.selection}')
         else:
-            print('No piece there')
+            print(f'No piece there: {self.selection}')
         
         return True
 
@@ -51,7 +56,7 @@ class Board:
                 pygame.draw.rect(self.display, is_white(x, y), square(x, y))
                 
                 if self.selection == (x, y):
-                    pygame.draw.rect(self.display, const.SELECTION, square(x, y), 10)
+                    pygame.draw.rect(self.display, const.SELECTION, square(x, y))
 
                 piece = self.board[y, x]
                 if piece != '0':
@@ -94,3 +99,8 @@ class Board:
                 self.board[y, x] = board[y][x]
 
         return True
+
+
+
+class Piece:
+    pass
