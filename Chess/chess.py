@@ -103,4 +103,5 @@ class Board:
 
 
 class Piece:
-    pass
+    def __init__(self):
+        
