@@ -28,6 +28,9 @@ class Board:
         self.fen = position if position else 'rnbqkbnr/pppppppp/00000000/00000000/00000000/00000000/PPPPPPPP/RNBQKBNR w KQkq - 0 1' # Proper FEN --> 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1'
         self.parse()
 
+    def __getitem__(self, *key):
+        return self.board[key[1], key[0]]
+
     # Circle from top left corner
     # Unpack to the pygame.draw.circle function
     def circle(self, a, b):
