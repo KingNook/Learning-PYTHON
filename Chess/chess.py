@@ -44,9 +44,12 @@ class Board:
         for x in range(8):
             for y in range(8):
                 pygame.draw.rect(self.display, is_white(x, y), square(x, y))
+                
+                if self.selection == (x, y):
+                    pygame.draw.rect(self.display, const.SELECTION, square(x, y), 10)
+
                 piece = self.board[y, x]
                 if piece != '0':
-                    print(piece, self.pieces[piece], get_coords(x, y), x, y)
                     self.display.blit(self.pieces[piece], get_coords(x, y))
 
         return True
