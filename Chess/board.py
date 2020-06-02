@@ -99,9 +99,3 @@ class Board:
                 self.board[y, x] = board[y][x]
 
         return True
-
-
-
-class Piece:
-    def __init__(self):
-        

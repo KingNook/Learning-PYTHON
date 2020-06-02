@@ -1,5 +1,5 @@
 import pygame, const
-from chess import Board
+from board import Board
 
 pygame.init()
 pygame.display.set_caption('Chess')
