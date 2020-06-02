@@ -29,7 +29,14 @@ class Board:
         self.parse()
 
     def mouse_handler(self, pos):
-        pass
+        square = (pos[0] // const.PIX[0], pos[1] // const.PIX[1])
+        if self.board[square[1], square[0]] != '0':
+            self.selection = square
+            print(f'Selection: {self.selection}')
+        else:
+            print('No piece there')
+        
+        return True
 
     def draw_board(self):
 
