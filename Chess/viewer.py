@@ -21,4 +21,6 @@ while running:
             if event.button == 1:
                 board.mouse_handler(event.pos)
 
+    board.draw_board()
+
     pygame.display.flip()
