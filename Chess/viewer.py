@@ -6,6 +6,10 @@ pygame.display.set_caption('Chess')
 screen = pygame.display.set_mode(const.DIM)
 
 board = Board(screen)
+
+# FOR DEBUGGING (REMOVE LATER)
+board.parse('00000000/00000000/00000000/000q0000/00000000/00000000/00000000/00000000 w KQkq - 0 1')
+
 board.draw_board()
 
 # GAME LOOP
