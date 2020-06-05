@@ -1,19 +1,23 @@
-import pygame, board, const
+import pygame, board, const, os
 pygame.init()
 
+
+path = os.getcwd().replace('\\', '/').replace('\\', '/')
+
 class Piece:
-    def __init__(self, icon, board):
-        self.icon = icon
+    def __init__(self, piece, board, colour):
+        self.colour = colour
+        self.icon = pygame.image.load(f'{path}/Chess/pieces/Chess_{piece.lower()}{colour}t60.png')
         if not isinstance(board, board.Board):
             raise TypeError
         self.board = board
     
     # Returns int from -1 to 1
-    # Takes coord as tuple (x, y) and color as string 'l' (white piece) or string 'd' (black piece)
+    # Takes coord as tuple (x, y) and colour as string 'l' (white piece) or string 'd' (black piece)
     # -1 = Invalid move (out of bounds OR friendly piece)
     # 0 = Empty Square
     # 1 = Enemy piece
-    def valid_square(self, coord, color):
+    def valid_square(self, coord, colour):
         # Check numbers are valid (within board)
         if not (0 <= coord[0] <= 7 and 0 <= coord[1] <= 7):
             return -1
@@ -24,16 +28,16 @@ class Piece:
         if self.board[coord[0], coord[1]] == '0':
             return 0
 
-        # Check piece occupying the square is of the opposite color
-        if square in const.PIECES[color]:
+        # Check piece occupying the square is of the opposite colour
+        if square in const.PIECES[colour]:
             return -1
         
         return 1
 
 
 class King(Piece):
-    def __init__(self, icon, board):
-        super().__init__(icon, board)
+    def __init__(self, board, colour):
+        super().__init__('k', board, colour)
 
     # Moves a King can make from position (a, b)
     def moves(self, a, b, c):
@@ -51,13 +55,13 @@ class King(Piece):
         
 
 class Queen(Piece):
-    def __init__(self, icon, board):
-        super().__init__(icon, board)
+    def __init__(self, board, colour):
+        super().__init__('q', board, colour)
 
-    def valid_square(self, coord, color):
-        return super().valid_square(coord, color)
+    def valid_square(self, coord, colour):
+        return super().valid_square(coord, colour)
 
-    # Moves a queen of color c [string 'l' or string 'd'] can make from position (a, b)
+    # Moves a queen of colour c [string 'l' or string 'd'] can make from position (a, b)
     def moves(self, a, b, c):
         m = []
         
@@ -96,17 +100,17 @@ class Queen(Piece):
         return m
 
 class Rook(Piece):
-    def __init__(self, icon, board):
-        super().__init__(icon, board)
+    def __init__(self, board, colour):
+        super().__init__('r', board, colour)
 
 class Bishop(Piece):
-    def __init__(self, icon, board):
-        super().__init__(icon, board)
+    def __init__(self, board, colour):
+        super().__init__('b', board, colour)
 
 class Knight(Piece):
-    def __init__(self, icon, board):
-        super().__init__(icon, board)
+    def __init__(self, board, colour):
+        super().__init__('n', board, colour)
 
 class Pawn(Piece):
-    def __init__(self, icon, board):
-        super().__init__(icon, board)
+    def __init__(self, board, colour):
+        super().__init__('p', board, colour)
