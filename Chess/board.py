@@ -46,11 +46,26 @@ class Board:
                 return True
             
             self.selection = square
+            
             print(f'Selection: {self.selection}')
         else:
             print(f'No piece there: {self.selection}')
+
+        self.select()
         
         return True
+
+    # Pass in position of piece (tuple)
+    def select(self):
+        if self.selection == None:
+            return False
+
+        piece = const.PIECE_MAP[self.board[self.selection[1], self.selection[0]].lower()]
+
+        # Change color to color of piece
+        for move in piece.moves(piece, self.selection[0], self.selection[1], 'l'):
+            # CHANGE COLOR OF POSSIBLE MOVES
+            pygame.draw.rect(self.display, const.SELECTION, square(*move))
 
     def draw_board(self):
 
