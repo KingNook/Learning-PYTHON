@@ -1,3 +1,10 @@
+# MULTI - OBJECT BRANCH
+- For each piece in the FEN, initialise the piece
+    - ## PIECE CLASS
+        - [ ] Change piece to take its own position as well in \__init__()
+        - [ ] Change piece methods to use instance variables for position
+        - [ ] Change piece methods to use instance variable for color
+
 # URGENT
 - Currently broken - To fix
     - [ ] Initialise
