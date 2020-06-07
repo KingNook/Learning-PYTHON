@@ -1,4 +1,4 @@
-import pygame, const, os, numpy
+import pygame, const, os, numpy, pieces
 pygame.init()
 
 path = os.getcwd().replace('\\', '/').replace('\\', '/')
@@ -18,9 +18,10 @@ def is_white(a, b):
 class Board:
     def __init__(self, display, position = None):
         self.pieces = {}
-        self.board = numpy.zeros((8, 8), str)
+        self.board = numpy.zeros((8, 8), pieces.Piece)
         self.display = display
         self.selection = None
+        self.piece = None
 
         self.get_pieces()
 
@@ -39,7 +40,7 @@ class Board:
 
     def mouse_handler(self, pos):
         square = (pos[0] // const.PIX[0], pos[1] // const.PIX[1])
-        if self.board[square[1], square[0]] != '0':
+        if self.board[square[1], square[0]] != None:
             
             if self.selection == square:
                 print(f'Already selected: {self.selection}')
@@ -60,32 +61,38 @@ class Board:
         if self.selection == None:
             return False
 
-        piece = const.PIECE_MAP[self.board[self.selection[1], self.selection[0]].lower()]
+        self.piece = self.board[self.selection[1], self.selection[0]]
 
         # Change color to color of piece
-        for move in piece.moves(piece, self.selection[0], self.selection[1], 'l'):
-            # CHANGE COLOR OF POSSIBLE MOVES
-            pygame.draw.rect(self.display, const.SELECTION, square(*move))
+        return True
 
     def draw_board(self):
 
         # Draw squares
         for x in range(8):
             for y in range(8):
+                # Draw board (layer 0)
                 pygame.draw.rect(self.display, is_white(x, y), square(x, y))
                 
+                # Colour selection square (layer 1)
                 if self.selection == (x, y):
                     pygame.draw.rect(self.display, const.SELECTION, square(x, y))
 
+                # Colour possible moves (also layer 1)
+                if self.selection != None:
+                    for move in self.piece.moves(self.selection[0], self.selection[1], 'l'):
+                        # CHANGE COLOR OF POSSIBLE MOVES
+                        pygame.draw.rect(self.display, const.SELECTION, square(*move))
+
+                # Draw in pieces (layer 2)
                 piece = self.board[y, x]
-                if piece != '0':
-                    self.display.blit(self.pieces[piece], get_coords(x, y))
+                if piece != None:
+                    self.display.blit(piece.icon, get_coords(x, y))
 
         return True
 
     def load_piece(self, piece, colour):
-        self.pieces[piece] = pygame.image.load(f'{path}/Chess/pieces/Chess_{piece.lower()}{colour}t60.png')
-
+        self.pieces[piece] = const.PIECE_MAP[piece.lower()](self, colour)
         return True
 
     def get_pieces(self):
@@ -115,6 +122,6 @@ class Board:
         board = [list(i) for i in pos.split('/')[::-1]]
         for y in range(8):
             for x in range(8):
-                self.board[y, x] = board[y][x]
-
+                self.board[y, x] = self.pieces[board[y][x]] if board[y][x] != '0' else None
+    
         return True

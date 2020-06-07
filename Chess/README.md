@@ -4,6 +4,9 @@
         - [ ] Change piece to take its own position as well in \__init__()
         - [ ] Change piece methods to use instance variables for position
         - [ ] Change piece methods to use instance variable for color
+    - ## BOARD CLASS
+        - [ ] Change get_pieces method to create instances of pieces for each piece in the FEN
+        - [ ] Change parse method to ?
 
 # URGENT
 - Currently broken - To fix
