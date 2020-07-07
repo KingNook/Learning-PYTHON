@@ -1,3 +1,6 @@
+# Lessons
+- MUST Plan Ahead
+
 # URGENT
 - Currently broken - To fix
     - [ ] Initialise

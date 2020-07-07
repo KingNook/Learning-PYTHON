@@ -70,7 +70,7 @@ class Queen(Piece):
             m.append((x, b))
 
         # Horizontally to right
-        x = a + 1
+        x = a + 1   
         while self.valid_square((x, b), c) == 0:
             m.append((x, b))
             x += 1
