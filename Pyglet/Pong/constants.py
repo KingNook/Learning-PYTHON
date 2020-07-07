@@ -1,0 +1,10 @@
+# SETTINGS
+WIDTH = 640
+HEIGHT = 640
+
+# COLOURS
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+
+
+
