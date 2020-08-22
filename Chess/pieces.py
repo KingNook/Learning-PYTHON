@@ -13,7 +13,7 @@ class Piece:
     # -1 = Invalid move (out of bounds OR friendly piece)
     # 0 = Empty Square
     # 1 = Enemy piece
-    def valid_square(self, coord, color):
+    def valid_square(self, coord, *color):
         # Check numbers are valid (within board)
         if not (0 <= coord[0] <= 7 and 0 <= coord[1] <= 7):
             return -1

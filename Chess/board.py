@@ -84,7 +84,10 @@ class Board:
         return True
 
     def load_piece(self, piece, colour):
-        self.pieces[piece] = pygame.image.load(f'{path}/Chess/pieces/Chess_{piece.lower()}{colour}t60.png')
+        try:
+            self.pieces[piece] = pygame.image.load(f'{path}/pieces/Chess_{piece.lower()}{colour}t60.png')
+        except pygame.error:
+            self.pieces[piece] = pygame.image.load(f'{path}/Chess/pieces/Chess_{piece.lower()}{colour}t60.png')
 
         return True
 
