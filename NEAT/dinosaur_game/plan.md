@@ -19,5 +19,5 @@
     - Class Variables: IMG lists
     - Instance Variables:
         - (Dinosaur): y, velocity, 
-    - Methods: init, Move, Draw, Get Mask
+    - Methods: \__init__, Move, Draw, Get Mask
     - 
